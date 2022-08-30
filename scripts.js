@@ -3,9 +3,15 @@ var color1 = document.querySelector(".color1");
 var color2 = document.querySelector(".color2");
 var body = document.getElementById("gradient");
 var ul = document.querySelector("ul");
-var direction = "right"
+var button = document.getElementById("genNew");
+var direction = "right";
+var randcol1 = "";
+var ramdcol2 = "";
+
 
 function setGradient() {
+    console.log(color1.value);
+    console.log(color2.value);
     body.style.background = 
     "linear-gradient(to "+ direction 
     + ", " 
@@ -35,6 +41,14 @@ function ulevent(myDirection) {
         setGradient();
     }
 }
+
+function chooseRand() {
+    color1.value = "#" + Math.floor(Math.random()*16777215).toString(16);
+    color2.value = "#" + Math.floor(Math.random()*16777215).toString(16);
+    console.log(color1.value );
+    console.log(color2.value );
+    setGradient();
+}
 css.textContent = body.style.background = 
 "linear-gradient(to right, rgb(255, 0, 0), rgb(255, 255, 0))";
 
@@ -43,3 +57,6 @@ color1.addEventListener("input", setGradient);
 color2.addEventListener("input", setGradient)
 
 ul.addEventListener("click", ulevent);
+
+genNew.addEventListener("click", chooseRand);
+
